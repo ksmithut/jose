@@ -1,6 +1,6 @@
 import { JOSENotSupported, JWEInvalid, JWSInvalid } from '../util/errors.js'
 
-type CritCheckHeader = object & {
+interface CritCheckHeader {
   b64?: boolean
   crit?: string[]
 }
@@ -18,7 +18,7 @@ function validateCrit(
   }
 
   if (!protectedHeader || !('crit' in protectedHeader)) {
-    return new Set([])
+    return new Set()
   }
 
   if (
