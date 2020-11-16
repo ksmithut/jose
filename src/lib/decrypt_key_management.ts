@@ -47,7 +47,9 @@ async function decryptKeyManagement(
       // Direct Key Agreement
       assertHeaderParameter(joseHeader, 'epk', 'Ephemeral Public Key')
       if (!ECDH.ecdhAllowed(key)) {
-        throw new JOSENotSupported('ECDH not allowed or unsupported by your javascript runtime')
+        throw new JOSENotSupported(
+          'ECDH-ES with the provided key is not allowed or not supported by your javascript runtime',
+        )
       }
       const ephemeralKey = await ECDH.publicJwkToEphemeralKey(joseHeader.epk!)
       let partyUInfo!: Uint8Array
@@ -111,7 +113,7 @@ async function decryptKeyManagement(
       return aesGcmKw(alg, key, encryptedKey!, iv, tag)
     }
     default: {
-      throw new JOSENotSupported(`alg ${alg} is unsupported`)
+      throw new JOSENotSupported('unsupported or invalid "alg" (JWE Algorithm) header value')
     }
   }
 }
