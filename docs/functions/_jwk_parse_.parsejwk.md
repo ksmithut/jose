@@ -4,10 +4,10 @@
 
 *Defined in [src/jwk/parse.ts:50](https://github.com/panva/jose/blob/v3.0.2/src/jwk/parse.ts#L50)*
 
-Converts a JWK to a runtime-specific key representation. Either JWK "alg" (Algorithm)
-Parameter must be present or the optional "alg" argument. When running on a platform
-using [Web Cryptography API](https://www.w3.org/TR/WebCryptoAPI/) the jwk parameters
-"use", "key_ops", and "ext" are also used in the resulting `CryptoKey`.
+Converts a JWK to a runtime-specific key representation (KeyLike). Either
+JWK "alg" (Algorithm) Parameter must be present or the optional "alg" argument. When
+running on a platform using [Web Cryptography API](https://www.w3.org/TR/WebCryptoAPI/)
+the jwk parameters "use", "key_ops", and "ext" are also used in the resulting `CryptoKey`.
 
 **`example`** 
 ```js
